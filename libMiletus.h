@@ -71,7 +71,7 @@ public:
   string name; // TODO: Remove it
   miletusType type;
   bool isRequired;
-  JsonVariant currentValue;
+  ArduinoJson::JsonVariant currentValue;
   list<string> possibleValues;
 };
 
@@ -97,10 +97,10 @@ public:
 
   list<string> getArgumentList();
   string getArgument(int pos);
-  bool appendResult(string key, JsonVariant value);
+  bool appendResult(string key, ArduinoJson::JsonVariant value);
   void abort(const char *error);
 
-  JsonVariant getParameter(string paramName);
+  ArduinoJson::JsonVariant getParameter(string paramName);
 
 private:
   miletusRole role;
@@ -108,21 +108,21 @@ private:
   bool responseJsonInitialized = false;
   Component *parentComponent;
   bool (*userFunction)(Command &command);
-  JsonObject *responseJson;
-  JsonObject *resultsJson;
+  ArduinoJson::JsonObject *responseJson;
+  ArduinoJson::JsonObject *resultsJson;
 
-  DynamicJsonBuffer *responseJsonBuffer;
+  ArduinoJson::DynamicJsonBuffer *responseJsonBuffer;
 };
 
 class State {
 public:
   bool isRequired;
   miletusType type;
-  JsonVariant minimum;
-  JsonVariant maximum;
+  ArduinoJson::JsonVariant minimum;
+  ArduinoJson::JsonVariant maximum;
   string unity;
   list<string> possibleValues;
-  JsonVariant value;
+  ArduinoJson::JsonVariant value;
   string name;
   bool (*callback)(const char *component_trait_state_value);
 
@@ -151,12 +151,12 @@ public:
   Component() { this->name = ""; };
   Component(string name) { this->name = name; }
   State *getState(const char *trait, const char *state);
-  bool setState(const char *trait, const char *state, JsonVariant value);
+  bool setState(const char *trait, const char *state, ArduinoJson::JsonVariant value);
   bool setStateCallback(const char *trait, const char *state,
                         bool (*f)(const char *component_trait_state_value));
   bool setCommand(const char *trait, const char *cmd,
                   bool (*f)(Command &command));
-  void addTrait(const char *trait, JsonObject *jsonTraits);
+  void addTrait(const char *trait, ArduinoJson::JsonObject *jsonTraits);
   string getJson();
 };
 
@@ -179,7 +179,7 @@ public:
   void processRequest(RequestT *request);
   void dumpTraits();
   bool setState(const char *componentName, const char *traitName,
-                const char *stateName, JsonVariant value);
+                const char *stateName, ArduinoJson::JsonVariant value);
   bool setStateCallback(const char *componentName, const char *traitName,
                         const char *stateName,
                         bool (*f)(const char *traitName));
@@ -190,7 +190,7 @@ public:
   void setProvider(MiletusProvider *p);
   unsigned int getFingerprint();
 
-  DynamicJsonBuffer *getCommandJsonBuffer();
+  ArduinoJson::DynamicJsonBuffer *getCommandJsonBuffer();
 
   // bool addProvider(MiletusProvider* p) {provider = p;}
 private:
@@ -204,7 +204,7 @@ private:
 
   bool jsonInit = false;
 
-  void merge(JsonObject *dest, JsonObject &src);
+  void merge(ArduinoJson::JsonObject *dest, ArduinoJson::JsonObject &src);
   void initJson();
 
   char *_buffer = NULL;
@@ -212,11 +212,11 @@ private:
   int fingerprint = 0;
   bool hasUpdateToBePublished = false;
   const char *name;
-  JsonObject *jsonTraits;
-  JsonObject *jsonNestedTraits;
-  JsonObject *jsonInfo;
-  DynamicJsonBuffer *traitsJsonBuffer;
-  DynamicJsonBuffer *infoJsonBuffer;
+  ArduinoJson::JsonObject *jsonTraits;
+  ArduinoJson::JsonObject *jsonNestedTraits;
+  ArduinoJson::JsonObject *jsonInfo;
+  ArduinoJson::DynamicJsonBuffer *traitsJsonBuffer;
+  ArduinoJson::DynamicJsonBuffer *infoJsonBuffer;
 };
 
 #endif // LIB_MILETUS_H
