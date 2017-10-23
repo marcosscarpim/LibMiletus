@@ -1,3 +1,27 @@
+/*************************************************************************
+The MIT License (MIT)
+Copyright (c) 2017 Marcos Scarpim -- marcos.scarpim@gmail.com
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*************************************************************************/
+
 #ifndef ARDUINO_FIREBASE_H
 #define ARDUINO_FIREBASE_H
 
@@ -21,18 +45,18 @@
 
 class arduino_firebase : public MiletusPubSubIf {
  public:
-  arduino_firebase(const char* device_name, const char* host, const char* auth); //DONE
+  arduino_firebase(const char* device_name, const char* host, const char* auth);
   ~arduino_firebase(){};
   
-  int handleEvent(RequestT*); //DONE
-  bool sendJsonToClient(std::string json); //DONE
-  bool sendErrorToClient(); //DONE
-  bool publish(const char* topic, const char* json, bool retained = 0); //DONE
+  int handleEvent(RequestT*);
+  bool sendJsonToClient(std::string json);
+  bool sendErrorToClient();
+  bool publish(const char* topic, const char* json, bool retained = 0);
 
-  char* getProtocol(); //DONE
-  const char* getAddress(); //DONE
-  char* getVersion(); //DONE
-  int getPort(); //DONE
+  char* getProtocol();
+  const char* getAddress();
+  char* getVersion();
+  int getPort();
 
 
  private:
