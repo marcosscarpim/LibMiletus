@@ -36,13 +36,13 @@ MODIFY strings).
 #include <libMiletus.h>
 
 /* MODIFY: Modify this macro with your WiFi SSID */
-//#define WIFI_SSID "WLL"
 #define WIFI_SSID "WIFI_SSID"
 /* MODIFY: Modify this macro with your WiFi password */
-//#define WIFI_PASSWORD "22Modvx#"
 #define WIFI_PASSWORD "WIFI_PASSWORD"
 
+/* MODIFY: Modify this with your Firebase URL */
 #define FIREBASE_HOST "YOUR_FIREBASE_HOST"
+/* MODIFY: Modify this with your Firebase secret */
 #define FIREBASE_AUTH "YOUR_FB_SECRET_KEY"
 
 /* Global variable indicating the timestamp of the last update*/
