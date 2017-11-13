@@ -41,3 +41,16 @@ in the examples folder.
 Please notice you need to update fields **WIFI_SSID** and **WIFI_PASSWORD** with your
 Wifi information and **FIREBASE_HOST** and **FIREBASE_AUTH** with the database URL and
 secret you saved from previous step respectively.
+
+The code is automatically saving the correct command to toggle LED in **cmdjson** field
+from Firebase.
+
+In order to get or send information to the board, you need to update the field
+**command** in database. Below you can see the available commands:
+
+- 231: execute command in cmdjson field
+- 20: get info
+- 21: get traits
+- 22: get components
+
+Data is outputed in **answer** field from database.
